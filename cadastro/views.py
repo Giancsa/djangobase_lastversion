@@ -120,10 +120,10 @@ def contato(request):
             return redirect('index')
     else:
         # Exibe o formulário
-        form = PessoaForm()
+        form = ContatoForm()
 
     return render(
         request,
-        'cadastro/adicionar.html',
+        'cadastro/contato.html',
         {'form': form, 'nome': 'Joquinha'}
     )
