@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
-from cadastro.forms import PessoaForm
+from cadastro.forms import ContatoForm, PessoaForm
 from cadastro.models import Pessoa
 
 
@@ -114,7 +114,7 @@ def deletar(request, id):
 def contato(request):
     # Se o form está sendo enviado
     if request.method == 'POST':
-        form = PessoaForm(request.POST)
+        form = ContatoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')

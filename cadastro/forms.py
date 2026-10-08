@@ -1,5 +1,5 @@
 from django import forms
-from .models import Pessoa
+from .models import Contato, Pessoa
 
 class PessoaForm(forms.ModelForm):
     class Meta:
@@ -8,5 +8,5 @@ class PessoaForm(forms.ModelForm):
 
 class ContatoForm(forms.ModelForm):
     class Meta:
-        model = Pessoa
-        fields = ['nome', 'email', 'idade']
+        model = Contato
+        fields = ['nome', 'email', 'Assunto', 'mensagem']

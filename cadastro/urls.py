@@ -19,4 +19,9 @@ urlpatterns = [
 
     # Rota para apagar uma pessoa única pelo ID
     path('pessoa/<int:id>/deletar/', views.deletar, name='deletar'),
+
+    #Rota para contato
+    path('Contato/<int:id>/contato/', views.contato, name='contato'),
+
+
 ]
