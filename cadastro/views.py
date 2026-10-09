@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
-
+from django.contrib.auth.decorators import login_required
 from cadastro.forms import ContatoForm, PessoaForm
 from cadastro.models import Pessoa
+
 
 
 def index(request):
@@ -38,6 +39,8 @@ def contato(request):
     )
 
 
+
+@login_required
 def adicionar(request):
     # Se o form está sendo enviado
     if request.method == 'POST':
@@ -55,7 +58,7 @@ def adicionar(request):
         {'form': form, 'nome': 'Joquinha'}
     )
 
-
+@login_required
 def detalhe(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
     return render(
@@ -67,7 +70,7 @@ def detalhe(request, id):
         }
     )
 
-
+@login_required
 def editar(request, id):
 
     # Obtém os dados da pessoa pelo ID
@@ -110,6 +113,7 @@ def deletar(request, id):
             'nome': 'Joquinha'
         }
     )
+
 
 def contato(request):
     # Se o form está sendo enviado

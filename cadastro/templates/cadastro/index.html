@@ -19,7 +19,7 @@
         <li>Nome: {{ pessoa.nome }}</li>
         <li>E-mail: {{ pessoa.email }}</li>
         <li>Idade: {{ pessoa.idade }}</li>
-        <li><a href="/pessoa/{{ pessoa.id }}">Ver</a></li>
+        <li><a href="{% url 'detalhe' id=pessoa.id %}">{{ pessoa.nome }}</a></li>
     </ul>    
     {% endfor %}
 

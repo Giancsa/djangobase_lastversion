@@ -3,13 +3,26 @@
 {% block titulo %}Cadastro - Adicionar Pessoa{% endblock %}
 
 {% block conteudo %}
-<article>
-    <h2>Adicionar Pessoa</h2>
 
+
+<article>
+    
+    <h2>Fale conosco</h2>
+
+
+
+     {% if user.is_authenticated %}
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Salvar</button>
     </form>
+    {% else %}
+    <p>Loga aí, por favor!</p>
+    {% endif %}
+
+    
+
+    
 </article>
 {% endblock %}
