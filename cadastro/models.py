@@ -14,8 +14,8 @@ class Pessoa(models.Model):
 class Contato(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField()
-    assunto = models.CharField(100)
-    mensagem = models.CharField(500)
+    assunto = models.CharField(max_length=100)
+    mensagem = models.TextField()
 
     def __str__(self):
         return self.nome

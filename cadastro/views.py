@@ -125,5 +125,6 @@ def contato(request):
     return render(
         request,
         'cadastro/contato.html',
-        {'form': form, 'nome': 'Joquinha'}
+        {'form': form, 
+        'nome': 'Joquinha'}
     )
