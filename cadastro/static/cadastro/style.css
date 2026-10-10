@@ -147,3 +147,27 @@ h6 {
     color: #333; /* Define a cor dos títulos */
     margin-bottom: 20px; /* Cria espaço abaixo dos títulos */
 }
+
+
+/* =========================================
+   9. RESPONSIVIDADE DA NAVBAR
+   ========================================= */
+
+@media (max-width: 600px) { /* Aplica estas regras em telas de até 600px */
+
+    nav {
+        flex-wrap: wrap; /* Permite que os grupos ocupem mais de uma linha */
+        gap: 15px; /* Define o espaço entre os grupos */
+        padding: 15px; /* Reduz o espaçamento interno da barra */
+    }
+
+    .nav-links {
+        gap: 12px; /* Diminui a distância entre os links */
+    }
+
+    .nav-user {
+        margin-left: 0; /* Remove o empurrão para a direita no celular */
+        width: 100%; /* Faz o grupo do usuário ocupar toda a largura disponível */
+        justify-content: flex-start; /* Alinha o grupo à esquerda */
+    }
+}
