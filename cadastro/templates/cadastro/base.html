@@ -10,23 +10,26 @@
 
 <body>
 
-    <nav>
-        <P></P>
-        <a href="{% url 'index' %}">Início</a> |
-        <a href="{% url 'contato' %}">Fale Conosco</a> |
-        <a href="{% url 'adicionar' %}">Nova pessoa</a> |
-        {% if user.is_authenticated %}
-        Olá, {{ user.username }}! |
-        <form method="POST" action="{% url 'logout' %}" style="display: inline;">
-            {% csrf_token %}
-            <button type="submit">Sair</button>
-        </form>
-        {% else %}
-        <a href="{% url 'login' %}">Entrar</a>
-        {% endif %}
-        <P></P>
 
+    <nav>
+        <div class="nav-links">
+            <a href="{% url 'index' %}">Início </a>
+            <a href="{% url 'contato' %}">Fale Conosco</a>
+            <a href="{% url 'adicionar' %}">Nova pessoa</a>
+
+            {% if user.is_authenticated %}
+            <span>Olá, {{ user.username }}!</span>
+
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Sair</button>
+            </form>
+            {% else %}
+            <a class="btn-nav" href="{% url 'login' %}">Entrar</a>
+            {% endif %}
+        </div>
     </nav>
+
 
     <hr>
 

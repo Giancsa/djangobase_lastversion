@@ -1,31 +1,117 @@
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #f4f6f8;
+    color: #333;
 }
 
 nav {
     background-color: #333;
-    padding: 10px;
-    border-radius: 5px;
+    
+    /*15 px em cima e embaixo; 20 px nas laterais.*/
+    padding: 15px 20px;
+    
+    /*Deixa os cantos mais arredondados.*/
+    border-radius: 8px;
+    
+    /*Cria espaço abaixo da navbar.*/
+    margin-bottom: 25px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin-right: 10px;
+    margin-right: 15px;
+    font-weight: bold;
+    transition: color 0.2s ease;
 }
 
-h1 {
+nav a:hover {
+    color: #ffc107;
+}
+
+nav button{
+    background-color: #ffc107;
     color: #333;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav button :hover{
+    background-color: #e0a800;
+}
+
+/*.nav-links seleciona o contêiner da navegação.*/
+.nav-links{
+    display: flex;
+    
+    /*Ela alinha verticalmente os itens ao centro da linha flexível*/
+    align-items: center;
+    
+    /*aumentar o espaço entre os links*/
+    gap: 20px;
+    
+    /* permite que os elementos passem para outra linha se faltar espaço */
+    flex-wrap: wrap;
+}
+
+.nav-links form{
+    margin: 0;
+}
+
+
+.nav-links a.btn-nav {
+    /* Permite aplicar espaçamento interno e dimensões ao link, mantendo-o na linha. */
+    display: inline-block;
+
+    /*Define o fundo amarelo.*/
+    background-color: #ffc107;
+    
+    /*Cor do texto*/
+    color: #333;
+
+    /*Cria espaço interno, dando ao link o formato de botão.*/
+    padding: 8px 14px;
+    border-radius: 2px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 0;
+    transition: background-color 0.2s ease;
+}
+
+.nav-links a.btn-nav:hover {
+    background-color: #e0a800;
+    color: #333;
+}
+
+
+/*span seleciona o elemento <span> dentro dele.*/
+.nav-links span{
+    color: white;
+}
+
+h1, h2, h3,h4,h5,h6 {
+    color: #333;
+    margin-bottom: 20px;
 }
 
 button {
     background-color: #333;
     color: white;
-    padding: 8px 16px;
+    padding: 10px 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
+
