@@ -11,24 +11,34 @@
 <body>
 
 
-    <nav>
-        <div class="nav-links">
-            <a href="{% url 'index' %}">Início </a>
-            <a href="{% url 'contato' %}">Fale Conosco</a>
-            <a href="{% url 'adicionar' %}">Nova pessoa</a>
+<nav> <!-- Barra principal de navegação -->
 
-            {% if user.is_authenticated %}
-            <span>Olá, {{ user.username }}!</span>
+    <div class="nav-links"> <!-- Grupo de links à esquerda -->
+        <a href="{% url 'index' %}">Início</a>
+        <a href="{% url 'contato' %}">Fale Conosco</a>
+        <a href="{% url 'adicionar' %}">Nova pessoa</a>
+    </div>
 
-            <form method="POST" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit">Sair</button>
+    <div class="nav-user"> <!-- Grupo de usuário e acesso à direita -->
+
+        {% if user.is_authenticated %} <!-- Verifica se o usuário está logado -->
+
+            <span>Olá, {{ user.username }}!</span> <!-- Exibe o nome do usuário -->
+
+            <form method="POST" action="{% url 'logout' %}"> <!-- Formulário de saída -->
+                {% csrf_token %} <!-- Proteção de segurança do Django -->
+                <button class="btn-nav" type="submit">Sair</button> <!-- Botão de logout -->
             </form>
-            {% else %}
-            <a class="btn-nav" href="{% url 'login' %}">Entrar</a>
-            {% endif %}
-        </div>
-    </nav>
+
+        {% else %} <!-- Se não estiver logado -->
+
+            <a class="btn-nav" href="{% url 'login' %}">Entrar</a> <!-- Link de login -->
+
+        {% endif %} <!-- Finaliza a condição de autenticação -->
+
+    </div>
+
+</nav>
 
 
     <hr>

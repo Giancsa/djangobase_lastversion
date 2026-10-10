@@ -1,117 +1,149 @@
 
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS
+   ========================================= */
+
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura e altura */
 }
 
 body {
-    font-family: Arial, sans-serif;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f6f8;
-    color: #333;
+    font-family: Arial, sans-serif; /* Define a fonte principal do site */
+    max-width: 1000px; /* Limita a largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+    padding: 20px; /* Cria espaço interno nas bordas da página */
+    background-color: #f4f6f8; /* Define um fundo cinza-claro */
+    color: #333; /* Define a cor padrão dos textos */
 }
+
+
+/* =========================================
+   2. BARRA DE NAVEGAÇÃO
+   ========================================= */
 
 nav {
-    background-color: #333;
-    
-    /*15 px em cima e embaixo; 20 px nas laterais.*/
-    padding: 15px 20px;
-    
-    /*Deixa os cantos mais arredondados.*/
-    border-radius: 8px;
-    
-    /*Cria espaço abaixo da navbar.*/
-    margin-bottom: 25px;
+    display: flex; /* Coloca os grupos da navbar lado a lado */
+    align-items: center; /* Alinha os grupos verticalmente ao centro */
+    gap: 20px; /* Define o espaço entre os grupos */
+    background-color: #333; /* Define o fundo cinza-escuro */
+    padding: 15px 20px; /* Cria espaço interno: 15px vertical e 20px horizontal */
+    border-radius: 8px; /* Arredonda os cantos da barra */
+    margin-bottom: 25px; /* Cria espaço abaixo da navbar */
 }
 
+
+/* =========================================
+   3. LINKS DA NAVEGAÇÃO
+   ========================================= */
+
 nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-    font-weight: bold;
-    transition: color 0.2s ease;
+    color: white; /* Define os links como brancos */
+    text-decoration: none; /* Remove o sublinhado dos links */
+    margin-right: 0; /* Evita espaço adicional além do gap do Flexbox */
+    font-weight: bold; /* Deixa os links em negrito */
+    transition: color 0.2s ease; /* Suaviza as mudanças de cor do texto */
 }
 
 nav a:hover {
-    color: #ffc107;
-}
-
-nav button{
-    background-color: #ffc107;
-    color: #333;
-    padding: 8px 14px;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-nav button :hover{
-    background-color: #e0a800;
-}
-
-/*.nav-links seleciona o contêiner da navegação.*/
-.nav-links{
-    display: flex;
-    
-    /*Ela alinha verticalmente os itens ao centro da linha flexível*/
-    align-items: center;
-    
-    /*aumentar o espaço entre os links*/
-    gap: 20px;
-    
-    /* permite que os elementos passem para outra linha se faltar espaço */
-    flex-wrap: wrap;
-}
-
-.nav-links form{
-    margin: 0;
+    color: #ffc107; /* Deixa o link amarelo ao passar o mouse */
 }
 
 
-.nav-links a.btn-nav {
-    /* Permite aplicar espaçamento interno e dimensões ao link, mantendo-o na linha. */
-    display: inline-block;
+/* =========================================
+   4. GRUPO DE LINKS À ESQUERDA
+   ========================================= */
 
-    /*Define o fundo amarelo.*/
-    background-color: #ffc107;
-    
-    /*Cor do texto*/
-    color: #333;
-
-    /*Cria espaço interno, dando ao link o formato de botão.*/
-    padding: 8px 14px;
-    border-radius: 2px;
-    font-weight: bold;
-    text-decoration: none;
-    margin-right: 0;
-    transition: background-color 0.2s ease;
-}
-
-.nav-links a.btn-nav:hover {
-    background-color: #e0a800;
-    color: #333;
+.nav-links {
+    display: flex; /* Organiza os links horizontalmente */
+    align-items: center; /* Alinha os links verticalmente */
+    gap: 20px; /* Define a distância entre os links */
+    flex-wrap: wrap; /* Permite que os links quebrem a linha se faltar espaço */
 }
 
 
-/*span seleciona o elemento <span> dentro dele.*/
-.nav-links span{
-    color: white;
+/* =========================================
+   5. GRUPO DO USUÁRIO À DIREITA
+   ========================================= */
+
+.nav-user {
+    display: flex; /* Organiza o usuário e o botão lado a lado */
+    align-items: center; /* Alinha o texto e o botão verticalmente */
+    gap: 12px; /* Define a distância entre o usuário e o botão */
+    margin-left: auto; /* Empurra o grupo do usuário para a direita */
+    flex-wrap: wrap; /* Permite quebrar a linha em telas estreitas */
 }
 
-h1, h2, h3,h4,h5,h6 {
-    color: #333;
-    margin-bottom: 20px;
+.nav-user span {
+    color: white; /* Deixa o nome do usuário visível no fundo escuro */
 }
+
+.nav-user form {
+    margin: 0; /* Remove a margem externa do formulário de logout */
+}
+
+
+/* =========================================
+   6. BOTÃO SAIR E LINK ENTRAR
+   ========================================= */
+
+.nav-user .btn-nav {
+    display: inline-flex; /* Permite alinhar o conteúdo e manter o elemento na linha */
+    align-items: center; /* Centraliza o texto verticalmente */
+    justify-content: center; /* Centraliza o texto horizontalmente */
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo das dimensões */
+
+    padding: 8px 14px; /* Define o espaço interno do botão */
+    font-family: inherit; /* Usa a fonte herdada do elemento pai */
+    font-size: 14px; /* Define o tamanho do texto */
+    font-weight: bold; /* Deixa o texto em negrito */
+    line-height: 1.2; /* Define a altura da linha do texto */
+
+    background-color: #ffc107; /* Define o fundo amarelo */
+    color: #333; /* Define o texto cinza-escuro */
+    border: none; /* Remove a borda */
+    border-radius: 4px; /* Arredonda os cantos */
+    text-decoration: none; /* Remove o sublinhado do link */
+    cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+
+    margin: 0; /* Remove as margens externas */
+    transition: background-color 0.2s ease; /* Suaviza a mudança da cor de fundo */
+}
+
+.nav-user .btn-nav:hover {
+    background-color: #e0a800; /* Escurece o amarelo ao passar o mouse */
+    color: #333; /* Mantém o texto escuro durante o hover */
+}
+
+
+/* =========================================
+   7. BOTÕES GERAIS DO SITE
+   ========================================= */
 
 button {
-    background-color: #333;
-    color: white;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+    background-color: #333; /* Define o fundo padrão dos botões */
+    color: white; /* Define o texto padrão como branco */
+    padding: 10px 16px; /* Cria espaço interno nos botões */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Arredonda os cantos */
+    cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+    transition: background-color 0.2s; /* Suaviza a mudança de cor */
 }
 
+button:hover {
+    background-color: #555; /* Clareia o fundo dos botões gerais ao passar o mouse */
+}
+
+
+/* =========================================
+   8. TÍTULOS
+   ========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333; /* Define a cor dos títulos */
+    margin-bottom: 20px; /* Cria espaço abaixo dos títulos */
+}
