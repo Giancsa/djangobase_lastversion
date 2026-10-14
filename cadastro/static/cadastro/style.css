@@ -148,6 +148,22 @@ h6 {
     margin-bottom: 20px; /* Cria espaço abaixo dos títulos */
 }
 
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    list-style: none;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    list-style: none;
+}
+
 
 /* =========================================
    9. RESPONSIVIDADE DA NAVBAR

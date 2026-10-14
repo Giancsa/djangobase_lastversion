@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from cadastro.forms import ContatoForm, PessoaForm
 from cadastro.models import Pessoa
+from django.contrib import messages
 
 
 
@@ -39,14 +40,13 @@ def contato(request):
     )
 
 
-
-@login_required
 def adicionar(request):
     # Se o form está sendo enviado
     if request.method == 'POST':
         form = PessoaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Pessoa adicionada com sucesso!')
             return redirect('index')
     else:
         # Exibe o formulário
@@ -81,6 +81,7 @@ def editar(request, id):
         form = PessoaForm(request.POST, instance=pessoa)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Pessoa atualizada com sucesso!')
             return redirect('detalhe', id=id)
     else:
         form = PessoaForm(instance=pessoa)
@@ -103,6 +104,7 @@ def deletar(request, id):
     # Se o frmulário foi enviado
     if request.method == 'POST':
         pessoa.delete()
+        messages.success(request, 'Pessoa deletada com sucesso!')
         return redirect('index')
 
     return render(
