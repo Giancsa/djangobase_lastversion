@@ -1,30 +1,58 @@
+
 {% extends 'cadastro/base.html' %}
 
-{% block titulo %}Cadastro{% endblock%}
+{% block titulo %}Cadastro{% endblock %}
 
 {% block conteudo %}
 
-<section>
+<section class="container py-4"> <!-- Centraliza o conteúdo e adiciona espaçamento vertical -->
 
-    <h2>Pessoas Cadastradas</h2>
+    <h2 class="mb-4">Pessoas Cadastradas</h2> <!-- Cria um espaço abaixo do título -->
 
-    {% if total == 0 %}
-    
-    <p>Ooops! Cadastre alguém primeiro!</p>
-    
-    {% else %}
+    {% if total == 0 %} <!-- Verifica se não existem pessoas cadastradas -->
 
-    {% for pessoa in pessoas %}
-    <ul>
-        <li>Nome: {{ pessoa.nome }}</li>
-        <li>E-mail: {{ pessoa.email }}</li>
-        <li>Idade: {{ pessoa.idade }}</li>
-        <li><a href="{% url 'detalhe' id=pessoa.id %}">{{ pessoa.nome }}</a></li>
-    </ul>    
-    {% endfor %}
+        <div class="alert alert-info" role="alert"> <!-- Exibe um aviso informativo do Bootstrap -->
+            Opa! Cadastre alguém primeiro!
+        </div>
 
-    {% endif %}
+    {% else %} <!-- Executa quando existem pessoas cadastradas -->
 
-</section>
+        <div class="row g-4"> <!-- Cria uma linha de cards com espaçamento entre eles -->
+
+            {% for pessoa in pessoas %} <!-- Percorre as pessoas recebidas do Django -->
+
+                <div class="col-12 col-md-6 col-lg-4"> <!-- 1 coluna no celular, 2 no tablet e 3 em telas grandes -->
+
+                    <div class="card h-100"> <!-- Cria o card e permite que ele ocupe toda a altura da coluna -->
+
+                        <div class="card-body"> <!-- Define a área interna do card -->
+
+                            <h5 class="card-title">{{ pessoa.nome }}</h5> <!-- Exibe o nome como título do card -->
+
+                            <p class="card-text">
+                                <strong>E-mail:</strong> {{ pessoa.email }} <!-- Exibe o e-mail -->
+                            </p>
+
+                            <p class="card-text">
+                                <strong>Idade:</strong> {{ pessoa.idade }} anos <!-- Exibe a idade -->
+                            </p>
+
+                            <a href="{% url 'detalhe' id=pessoa.id %}" class="btn btn-primary">
+                                Ver detalhes
+                            </a> <!-- Mantém a URL Django de detalhes e aplica o estilo de botão -->
+
+                        </div> <!-- Fecha o corpo do card -->
+
+                    </div> <!-- Fecha o card -->
+
+                </div> <!-- Fecha a coluna -->
+
+            {% endfor %} <!-- Finaliza o loop de pessoas -->
+
+        </div> <!-- Fecha a linha de cards -->
+
+    {% endif %} <!-- Finaliza a condição de listagem vazia -->
+
+</section> <!-- Fecha a seção principal -->
 
 {% endblock %}

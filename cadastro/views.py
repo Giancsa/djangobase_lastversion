@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from cadastro.forms import ContatoForm, PessoaForm
 from cadastro.models import Pessoa
 from django.contrib import messages
+from django.utils.safestring import mark_safe
 
 
 
@@ -15,7 +16,7 @@ def index(request):
     total = Pessoa.objects.count()
 
     contexto = {
-        'nome': 'Joquinha',
+        
         'pessoas': pessoas,
         'total': total
     }
@@ -30,7 +31,7 @@ def index(request):
 def contato(request):
 
     contexto = {
-        "nome": "Joquinha"
+        
     }
 
     return render(
@@ -46,7 +47,10 @@ def adicionar(request):
         form = PessoaForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Pessoa adicionada com sucesso!')
+            messages.success(
+                request, 
+                mark_safe(f'<strong>{form["nome"].value()}</strong> adicionada(o) com sucesso!')
+            )
             return redirect('index')
     else:
         # Exibe o formulário
@@ -55,7 +59,7 @@ def adicionar(request):
     return render(
         request,
         'cadastro/adicionar.html',
-        {'form': form, 'nome': 'Joquinha'}
+        {'form': form, }
     )
 
 @login_required
@@ -66,7 +70,7 @@ def detalhe(request, id):
         'cadastro/detalhe.html',
         {
             'pessoa': pessoa,
-            'nome': 'Joquinha'
+            
         }
     )
 
@@ -81,7 +85,10 @@ def editar(request, id):
         form = PessoaForm(request.POST, instance=pessoa)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Pessoa atualizada com sucesso!')
+            messages.success(
+                request, 
+                mark_safe(f'<strong>{form["nome"].value()}</strong> adicionada(o) com sucesso!')
+            )
             return redirect('detalhe', id=id)
     else:
         form = PessoaForm(instance=pessoa)
@@ -91,7 +98,7 @@ def editar(request, id):
         {
             'form': form,
             'pessoa': pessoa,
-            'nome': 'Joquinha'
+            
         }
     )
 
@@ -112,7 +119,7 @@ def deletar(request, id):
         'cadastro/deletar.html',
         {
             'pessoa': pessoa,
-            'nome': 'Joquinha'
+            
         }
     )
 
@@ -123,6 +130,7 @@ def contato(request):
         form = ContatoForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Mensagem enviada com sucesso!')
             return redirect('index')
     else:
         # Exibe o formulário
@@ -131,6 +139,6 @@ def contato(request):
     return render(
         request,
         'cadastro/contato.html',
-        {'form': form, 
-        'nome': 'Joquinha'}
+        {'form': form,} 
+        
     )

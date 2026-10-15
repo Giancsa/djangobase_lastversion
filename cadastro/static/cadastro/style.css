@@ -14,6 +14,10 @@ body {
     padding: 20px; /* Cria espaço interno nas bordas da página */
     background-color: #f4f6f8; /* Define um fundo cinza-claro */
     color: #333; /* Define a cor padrão dos textos */
+
+    display: flex; /* Organiza os elementos do body com Flexbox */
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    min-height: 100vh; /* Garante que o body ocupe pelo menos a altura da tela */
 }
 
 
@@ -164,6 +168,9 @@ h6 {
     list-style: none;
 }
 
+main {
+    flex: 1; /* Faz o conteúdo principal ocupar o espaço vertical disponível */
+}
 
 /* =========================================
    9. RESPONSIVIDADE DA NAVBAR
